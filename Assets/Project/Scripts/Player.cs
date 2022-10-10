@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+	public float speed = 5f;
     // Start is called before the first frame update
     void Start()
     {
@@ -12,11 +13,19 @@ public class Player : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
-	    transform.position = new Vector3(
-		    transform.position.x + 0.1f,
-		    transform.position.y,
-		    transform.position.z
-	    );
+	{
+		if(Input.GetKey(KeyCode.D)){
+			transform.position += Vector3.right * speed * Time.deltaTime;
+		}
+		if(Input.GetKey(KeyCode.A)){
+			transform.position += Vector3.left * speed * Time.deltaTime;
+		}
+		if(Input.GetKey(KeyCode.W)){
+			transform.position += Vector3.forward * speed * Time.deltaTime;
+		}
+		if(Input.GetKey(KeyCode.S)){
+			transform.position += Vector3.back * speed * Time.deltaTime;
+		}
+		
     }
 }
